@@ -27,7 +27,7 @@ export const TextContainer = styled.div`
 `;
 
 export const BuildingName = styled.h2`
-    margin: 5px;
+    margin: 10px;
 `;
 
 export const ButtonsContainer = styled.div`

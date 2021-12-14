@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
 import './mapStyles.css'
 import maplibregl from 'maplibre-gl';
+import { connect } from 'react-redux'
 
 const myAPIKey = '8f29ca4faadf42c6aa352315c93dc662';
 const mapStyle = 'https://maps.geoapify.com/v1/styles/osm-liberty/style.json';
 
-const Map = () => {
+const Map = ({coordinates}) => {
     let mapContainer;
 
     useEffect(() => {
         const initialState = {
-            lng: 24.940594677145064,
-            lat: 60.171545300000005,
+            lng: coordinates.lng,
+            lat: coordinates.lat,
             zoom: 17
         };
 
@@ -30,7 +31,7 @@ const Map = () => {
         })
             .setLngLat([initialState.lng, initialState.lat])
             .addTo(map);
-    }, [mapContainer]);
+    }, [coordinates, mapContainer]);
 
 
     return (
@@ -39,4 +40,11 @@ const Map = () => {
     )
 }
 
-export default Map
+const mapStateToProps = state => {
+    console.log('ok')
+    return {
+      coordinates: state.coordinates.coordinates
+    }
+  }
+
+export default connect(mapStateToProps, null)(Map)

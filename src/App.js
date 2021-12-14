@@ -20,7 +20,7 @@ function App() {
       <Sidebar isOpen={isOpen} toggle={toggle}/>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/buildings' element={<BuildingsList buildings={array}/>} />
+        <Route path='/buildings' element={<BuildingsList/>} />
       </Routes>
     </Router>
   );
