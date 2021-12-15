@@ -1,4 +1,4 @@
-##BuildingsMap
+## BuildingsMap
 
 An application used to check buildings on the map by address and add, update or delete this buildings in profile. Built with React, Redux, JavaScript, Styled Components and CSS.
 
