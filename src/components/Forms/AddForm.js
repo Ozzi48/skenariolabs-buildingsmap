@@ -113,10 +113,10 @@ const AddForm = (props) => {
                     ?
                     <Loader />
                     :
-                    <img 
-                    style={{ width: 250, height: '100%', margin: 10 }} 
-                    src={promoPicture} 
-                    alt="Add your building" />
+                    <img
+                        style={{ width: 250, height: '100%', margin: 10 }}
+                        src={promoPicture}
+                        alt="Add your building" />
                 }
                 <div style={{ display: "flex", flexDirection: 'column' }}>
                     {/* Name or entrance name Input */}
