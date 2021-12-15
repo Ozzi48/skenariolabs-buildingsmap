@@ -21,6 +21,7 @@ export const DescriptionInput = styled.textarea`
   width: 280px;
   height: 100px;
   padding: 6px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 `;
 
 export const FormButton = styled.button`
