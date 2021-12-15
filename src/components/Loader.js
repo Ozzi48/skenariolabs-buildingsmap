@@ -13,7 +13,7 @@ const Loader = () => {
     };
 
     return (
-        <div style={{margin: -70}}>
+        <div style={{ margin: -70 }}>
             <Lottie
                 style={{}}
                 options={defaultOptions}

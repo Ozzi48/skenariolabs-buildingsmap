@@ -5,7 +5,7 @@ export const MainFormContainer = styled.div`
   justify-content: flex-end;
   margin: 10px;
 
-    @media screen and (max-width: 668px){
+  @media screen and (max-width: 668px){
       justify-content: center;
-    }
+      }
 `;

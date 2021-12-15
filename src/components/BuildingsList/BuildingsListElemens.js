@@ -34,5 +34,10 @@ export const ButtonsContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 15px
+    margin-top: 15px;
+`;
+
+export const BuildingTitle = styled.p`
+    margin: 5px;
+    font-weight: bold;
 `

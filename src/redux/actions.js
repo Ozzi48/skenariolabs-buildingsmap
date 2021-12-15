@@ -1,5 +1,7 @@
 import { SET_BUILDING_COORDINATES, ADD_BUILDING_INFO, UPDATE_BUILDING_INFO, REMOVE_BUILDING_INFO, SHOW_LOADING, HIDE_LOADING } from "./types";
 
+
+//all functions for redux
 export function setBuildingCoordinates(coordinates) {
     return {
         type: SET_BUILDING_COORDINATES,

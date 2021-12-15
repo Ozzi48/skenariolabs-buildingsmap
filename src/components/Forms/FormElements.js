@@ -39,7 +39,7 @@ export const FormButton = styled.button`
         padding: 14px 28px;
     }
 
-    @media screen and (max-width: 668px){
+  @media screen and (max-width: 668px){
         padding: 8px 14px;
     }
 `;
