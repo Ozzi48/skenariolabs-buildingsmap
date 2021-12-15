@@ -1,6 +1,6 @@
-BuildinsMap
+##BuildingsMap
 
-An application used to check buildings on the map by address and add, update or delete this buildings in profile. Built with React, Redux, JavaScript, and Styled Components.
+An application used to check buildings on the map by address and add, update or delete this buildings in profile. Built with React, Redux, JavaScript, Styled Components and CSS.
 
 ## Project Screen Shot(s)
 ![project screen 1](https://finstudy.lt/GitScreen1.png)
