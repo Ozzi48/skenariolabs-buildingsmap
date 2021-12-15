@@ -50,12 +50,14 @@ const AddForm = (props) => {
             &country=${buildingData.country}&apiKey=${myAPIKey}`)
                 .then(response => response.json())
                 .then(result => {
-                    if (button == 'check') {
+                    if (button === 'check') {
                         props.setBuildingCoordinates({ lng: result.features[0].geometry.coordinates[0], lat: result.features[0].geometry.coordinates[1] })
                     }
-                    if (button == 'add') {
-                           var fullBuildingData = {...buildingData, lon: result.features[0].geometry.coordinates[0],
-                            lat: result.features[0].geometry.coordinates[1], date: createDate()}
+                    if (button === 'add') {
+                        var fullBuildingData = {
+                            ...buildingData, lon: result.features[0].geometry.coordinates[0],
+                            lat: result.features[0].geometry.coordinates[1], date: createDate()
+                        }
                         props.addBuildingInfo(fullBuildingData)
                     }
                 })

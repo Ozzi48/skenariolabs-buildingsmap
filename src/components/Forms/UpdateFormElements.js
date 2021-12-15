@@ -15,6 +15,8 @@ export const UpdateFormMainContainer = styled.div`
 
     @media screen and (max-width: 668px){
         height: 100%;
+        background: transparent;
+        align-items: flex-start;
     }
 `;
 
