@@ -6,8 +6,10 @@ const initialState = {
 
 export const buildingReducer = (state = initialState, action) => {
     switch (action.type) {
+        //Add
         case ADD_BUILDING_INFO:
             return { ...state, buildings: state.buildings.concat(action.payload) }
+        //Update
         case UPDATE_BUILDING_INFO:
             const index = state.buildings.findIndex(building => building.date === action.payload.date); //finding index of the item
             console.log(index)
@@ -25,6 +27,7 @@ export const buildingReducer = (state = initialState, action) => {
                 ...state, //copying the orignal state
                 buildings: newArray, //reassingning todos to new array
             }
+        //Delete
         case REMOVE_BUILDING_INFO:
             const filteredBuildings = state.buildings.filter(building => building.date !== action.payload)
             return {

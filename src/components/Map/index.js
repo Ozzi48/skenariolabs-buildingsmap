@@ -41,7 +41,6 @@ const Map = ({coordinates}) => {
 }
 
 const mapStateToProps = state => {
-    console.log('ok')
     return {
       coordinates: state.coordinates.coordinates
     }

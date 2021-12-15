@@ -52,3 +52,10 @@ export const FormContainer = styled.div`
     align-items: center;
     flex-direction: column;
 `;
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 5px;
+`

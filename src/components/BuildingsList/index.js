@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import UpdateForm from '../components/Forms/UpdateForm'
-import { FormButton } from '../components/Forms/FormElements'
-import { MainContainer, BuildingCard, TextContainer, BuildingName, ButtonsContainer } from '../components/BuildingsListElemens'
+import UpdateForm from '../Forms/UpdateForm'
+import { FormButton } from '../Forms/FormElements'
+import { MainContainer, BuildingCard, TextContainer, BuildingName, ButtonsContainer } from './BuildingsListElemens'
 import { connect } from 'react-redux'
-import { removeBuildingInfo } from '../redux/actions'
+import { removeBuildingInfo } from '../../redux/actions'
 
 const BuildingsList = ({ buildings, removeBuildingInfo }) => {
     const [isOpenForm, setIsOpenForm] = useState(false)

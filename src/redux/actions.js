@@ -1,4 +1,4 @@
-import { SET_BUILDING_COORDINATES, ADD_BUILDING_INFO, UPDATE_BUILDING_INFO, REMOVE_BUILDING_INFO } from "./types";
+import { SET_BUILDING_COORDINATES, ADD_BUILDING_INFO, UPDATE_BUILDING_INFO, REMOVE_BUILDING_INFO, SHOW_LOADING, HIDE_LOADING } from "./types";
 
 export function setBuildingCoordinates(coordinates) {
     return {
@@ -25,5 +25,17 @@ export function removeBuildingInfo(date) {
     return {
         type: REMOVE_BUILDING_INFO,
         payload: date
+    }
+}
+
+export function showLoading() {
+    return {
+        type: SHOW_LOADING
+    }
+}
+
+export function hideLoading() {
+    return {
+        type: HIDE_LOADING
     }
 }

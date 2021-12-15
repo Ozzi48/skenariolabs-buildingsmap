@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { FormLabel, FormInput, DescriptionInput, FormButton, FormContainer } from './FormElements'
+import { FormLabel, FormInput, DescriptionInput, FormButton, FormContainer, ButtonContainer } from './FormElements'
 import promoPicture from '../../media/PromoPicture.svg'
 import { UpdateFormMainContainer, UpdateFormContainer } from './UpdateFormElements'
 import { connect } from 'react-redux'
-import { updateBuildingInfo } from '../../redux/actions'
+import { updateBuildingInfo, showLoading, hideLoading } from '../../redux/actions'
+import Loader from '../Loader'
+import { useToasts } from "react-toast-notifications"
 
 const myAPIKey = '8f29ca4faadf42c6aa352315c93dc662';
 
-const UpdateForm = ({ isOpen, handleIsOpen, item, updateBuildingInfo }) => {
+const UpdateForm = ({ isOpen, handleIsOpen, item, updateBuildingInfo, showLoading, hideLoading, loading }) => {
+    const { addToast } = useToasts()
     const [buildingData, setBuildingData] = useState({
         name: null, street: null, housenumber: null, postcode: null,
         city: null, county: null, country: null, lat: null, lon: null, description: null, date: null
     })
-    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         if (item !== undefined) {
@@ -29,8 +31,9 @@ const UpdateForm = ({ isOpen, handleIsOpen, item, updateBuildingInfo }) => {
     }
 
     const handleUpdate = () => {
-        setLoading(true)
-        var checkEmptyKeys = [];
+        showLoading()
+        var checkEmptyKeys = []
+        var message = ""
         console.log(buildingData)
         for (var key in buildingData) {
             if (key !== 'lat' && key !== 'lon' && key !== 'description' && key !== 'date')
@@ -39,7 +42,12 @@ const UpdateForm = ({ isOpen, handleIsOpen, item, updateBuildingInfo }) => {
                 }
         }
         if (checkEmptyKeys.length > 0) {
-            alert(checkEmptyKeys.toString() + " are empty. Please, fill all fields");
+            message = checkEmptyKeys.toString() + " are empty. Please, fill all fields"
+            hideLoading()
+            addToast(message, {
+                appearance: 'info',
+                autoDismiss: true,
+            })
         } else {
             fetch(`https://api.geoapify.com/v1/geocode/search?name=${buildingData.name}&street=${buildingData.street}
             &housenumber=${buildingData.housenumber}&postcode=${buildingData.postcode}&city=${buildingData.city}&county=${buildingData.county}
@@ -51,24 +59,36 @@ const UpdateForm = ({ isOpen, handleIsOpen, item, updateBuildingInfo }) => {
                         lat: result.features[0].geometry.coordinates[1],
                     }
                     updateBuildingInfo(fullBuildingData)
+                    message = "Success. You have updated building"
                 }).finally(() => {
-                    setLoading(false)
+                    hideLoading()
+                    addToast(message, {
+                        appearance: 'info',
+                        autoDismiss: true,
+                    })
                     handleIsOpen()
                 }
                 )
                 .catch(e => {
-                    console.log(e);
+                    message = "Something went wrong. Try again!"
+                    hideLoading()
+                    addToast(message, {
+                        appearance: 'info',
+                        autoDismiss: true,
+                    })
                 });
         }
     }
 
-    if (isOpen && loading === false) {
+    if (isOpen) {
         return (
             <UpdateFormMainContainer>
                 <UpdateFormContainer>
 
                     <FormContainer>
-                        <img style={{ width: 250, height: '100%', margin: 10 }} src={promoPicture} alt="book your time" />
+                        {loading ? <Loader /> :
+                            <img style={{ width: 250, height: '100%', margin: 10 }} src={promoPicture} alt="Add your building" />
+                        }
                         <div style={{ display: "flex", flexDirection: 'column' }}>
                             <FormLabel>Name of the building</FormLabel>
                             <FormInput type="text" name="name" defaultValue={buildingData.name} onChange={changeHandler} />
@@ -86,10 +106,10 @@ const UpdateForm = ({ isOpen, handleIsOpen, item, updateBuildingInfo }) => {
                             <FormInput type="text" name="country" defaultValue={buildingData.country} onChange={changeHandler} />
                             <FormLabel>Description</FormLabel>
                             <DescriptionInput name="description" placeholder='Type your description' defaultValue={buildingData.description} onChange={changeHandler} />
-                            <div style={{ display: "flex", flexDirection: "row", justifyContent: 'space-around' }}>
-                                <FormButton onClick={handleUpdate} color="#161E54" style={{ marginTop: 10 }}>Update building Info</FormButton>
-                                <FormButton onClick={handleIsOpen} color="#161E54" style={{ marginTop: 10 }}>Cancel</FormButton>
-                            </div>
+                            <ButtonContainer>
+                                <FormButton onClick={handleUpdate} color="#161E54" style={{ marginTop: 10 }} disabled={loading}>Update building Info</FormButton>
+                                <FormButton onClick={handleIsOpen} color="#161E54" style={{ marginTop: 10 }} disabled={loading}>Cancel</FormButton>
+                            </ButtonContainer>
                         </div>
                     </FormContainer>
 
@@ -102,7 +122,15 @@ const UpdateForm = ({ isOpen, handleIsOpen, item, updateBuildingInfo }) => {
 }
 
 const mapDispatchToProps = {
-    updateBuildingInfo
+    updateBuildingInfo,
+    showLoading,
+    hideLoading
 }
 
-export default connect(null, mapDispatchToProps)(UpdateForm)
+const mapStateToProps = state => {
+    return {
+        loading: state.app.loading,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateForm)
