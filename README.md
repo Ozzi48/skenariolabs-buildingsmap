@@ -3,7 +3,7 @@
 An application used to check buildings on the map by address and add, update or delete this buildings in profile. Built with React, Redux, JavaScript, Styled Components and CSS.
 
 ## Demo 
-https://61ba1029d9e13b2d640a2626--elastic-snyder-fca3e2.netlify.app/
+https://elastic-snyder-fca3e2.netlify.app/
 
 ## Project Screen Shot(s)
 ![project screen 1](https://finstudy.lt/GitScreen1.png)
