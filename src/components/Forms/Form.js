@@ -91,6 +91,7 @@ const Form = (props) => {
                             name: '', street: '', housenumber: '', postcode: '',
                             city: '', county: '', country: '', lat: 0, lon: 0, description: '', date: ''
                         })
+                        props.formIsOpen()
                         message = "Success. You have added building"
                         addToast(message, {
                             appearance: 'info',
@@ -127,9 +128,13 @@ const Form = (props) => {
     }
     return (
         <FormContainer>
+            {props.Xicon ?
             <Icon>
                 <CloseIcon onClick={() => props.formIsOpen()}/>
             </Icon>
+            :
+            null
+            }
             {props.loading
                 ?
                 <Loader />

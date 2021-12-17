@@ -8,7 +8,7 @@ const UpdateForm = ({ isOpen, handleIsOpen, item }) => {
         return (
             <UpdateFormMainContainer>
                 <UpdateFormContainer>
-                    <Form handleIsOpen={handleIsOpen} item={item} formButtons='Update' />
+                    <Form handleIsOpen={handleIsOpen} item={item} formButtons='Update'/>
                 </UpdateFormContainer>
             </UpdateFormMainContainer>
         )

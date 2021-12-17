@@ -8,7 +8,7 @@ const AddForm = () => {
     if (openform) {
         return (
             <MainFormContainer>
-                <Form item={null} formButtons='Add' />
+                <Form item={null} formButtons='Add' Xicon={true}/>
             </MainFormContainer>
         )
     } else {
