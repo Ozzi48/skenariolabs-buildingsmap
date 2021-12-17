@@ -37,7 +37,8 @@ const Map = ({ coordinates, buildings }) => {
             markerIcon.classList.add("markerCheckBuilding");
             new maplibregl.Marker(markerIcon, {
                 anchor: 'bottom',
-                offset: [0, 6]
+                offset: [0, 6],
+                title: 'ok'
             })
                 .setLngLat([coordinates.lng, coordinates.lat])
                 .addTo(map);
@@ -49,9 +50,17 @@ const Map = ({ coordinates, buildings }) => {
                 markerIcon.classList.add("marker");
                 new maplibregl.Marker(markerIcon, {
                     anchor: 'bottom',
-                    offset: [0, 6]
+                    offset: [0, 6],
                 })
                     .setLngLat([buildings[i].lon, buildings[i].lat])
+                    .setPopup(new maplibregl.Popup({ offset: 25 }).setHTML(`
+                    <h2>Building name</h2>
+                    <p>${buildings[i].name}</p>
+                    <h2>Address</h2>
+                    <p>${buildings[i].street + ' ' + buildings[i].housenumber + ', ' + buildings[i].city + ', ' + buildings[i].postcode}</p>
+                    <h2>Description:</h2>
+                    <p>${buildings[i].description}</p>
+                        `))
                     .addTo(map);
             }
         }
