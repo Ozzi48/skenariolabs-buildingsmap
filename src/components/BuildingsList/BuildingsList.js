@@ -16,6 +16,13 @@ const BuildingsList = ({ buildings, removeBuildingInfo}) => {
         setIsOpenForm(!isOpenForm)
     }
 
+    const handleDeletePress = (item) => {
+        if (window.confirm('Are you sure you want to remove this building from the list?')) {
+            // Save it!
+            removeBuildingInfo(item)
+          }
+    }
+
     //fecth all buildings from redux
     useEffect(() => {
         setBuildingsInfo(buildings)
@@ -43,7 +50,7 @@ const BuildingsList = ({ buildings, removeBuildingInfo}) => {
                                 </BuildingTitle>
                             </TextContainer>
                             <ButtonsContainer>
-                                <FormButton color="#161E54" onClick={() => removeBuildingInfo(item.date)}>Delete</FormButton>
+                                <FormButton color="#161E54" onClick={() => handleDeletePress(item.date)}>Delete</FormButton>
                                 <FormButton color="#FF6347" onClick={() => handleIsOpenForm(item)}>Update</FormButton>
                             </ButtonsContainer>
                         </BuildingCard>

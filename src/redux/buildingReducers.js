@@ -12,20 +12,14 @@ export const buildingReducer = (state = initialState, action) => {
         //Update
         case UPDATE_BUILDING_INFO:
             const index = state.buildings.findIndex(building => building.date === action.payload.date); //finding index of the item
-            console.log(index)
             const newArray = [...state.buildings]; //making a new array
-            console.log('New', newArray[index])
-            console.log('Payload', action.payload)
-            var key = '';
-            for (key in newArray[index]) {
-                console.log('Payload', action.payload[key])
-                console.log('New', newArray[index][key])
-                if (key !== 'date')
-                    newArray[index] = { ...newArray[index], [key]: action.payload[key] }
-            }
+            Object.keys(newArray[index]).map((key) => {
+                newArray[index] = { ...newArray[index], [key]: action.payload[key] }
+                return null
+            })
             return {
                 ...state, //copying the orignal state
-                buildings: newArray, //reassingning todos to new array
+                buildings: newArray,
             }
         //Delete
         case REMOVE_BUILDING_INFO:

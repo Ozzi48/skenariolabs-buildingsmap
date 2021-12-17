@@ -1,7 +1,7 @@
 import { SET_BUILDING_COORDINATES } from "./types"
 
 const initialState = {
-    coordinates: { lng: 24.940594677145064, lat: 60.171545300000005 },
+    coordinates: null,
 }
 
 export const coordinatesReducer = (state = initialState, action) => {

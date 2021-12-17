@@ -3,9 +3,10 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import MyBuildings from './pages/MyBuildings'
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
+import Navbar from './components/Navbar/Navbar'
+import Sidebar from './components/Sidebar/Sidebar'
 import { ToastProvider } from 'react-toast-notifications'
+
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);

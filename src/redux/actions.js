@@ -1,4 +1,4 @@
-import { SET_BUILDING_COORDINATES, ADD_BUILDING_INFO, UPDATE_BUILDING_INFO, REMOVE_BUILDING_INFO, SHOW_LOADING, HIDE_LOADING } from "./types";
+import { SET_BUILDING_COORDINATES, ADD_BUILDING_INFO, UPDATE_BUILDING_INFO, REMOVE_BUILDING_INFO, SHOW_LOADING, HIDE_LOADING, FORM_IS_OPEN } from "./types";
 
 
 //all functions for redux
@@ -8,6 +8,7 @@ export function setBuildingCoordinates(coordinates) {
         payload: coordinates
     }
 }
+
 
 export function addBuildingInfo(building) {
     return {
@@ -39,5 +40,11 @@ export function showLoading() {
 export function hideLoading() {
     return {
         type: HIDE_LOADING
+    }
+}
+
+export function formIsOpen() {
+    return {
+        type: FORM_IS_OPEN
     }
 }

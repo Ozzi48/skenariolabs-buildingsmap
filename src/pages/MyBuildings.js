@@ -1,5 +1,5 @@
 import React from 'react'
-import BuildingsList from '../components/BuildingsList'
+import BuildingsList from '../components/BuildingsList/BuildingsList'
 
 
 const MyBuildings = () => {
