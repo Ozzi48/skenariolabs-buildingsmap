@@ -31,7 +31,7 @@ const Form = (props) => {
 
     //set building data from autocomplete input fields
     function onPlaceSelect(value, name) {
-        setBuildingData({ ...buildingData, [name]: value })
+            setBuildingData({ ...buildingData, [name]: value })
     }
 
     //set building data from inputs
@@ -160,7 +160,7 @@ const Form = (props) => {
                         placeholder="Enter street name here"
                         type="street"
                         value={buildingData.street}
-                        placeSelect={(value) => onPlaceSelect(value.properties.address_line1, 'street')}
+                        placeSelect={(value) => onPlaceSelect(value?.properties.address_line1, 'street')}
                     />
                 </GeoapifyContext>
                 {/* House Number Input */}
@@ -186,7 +186,7 @@ const Form = (props) => {
                         placeholder="Enter city here"
                         type="city"
                         value={buildingData.city}
-                        placeSelect={(value) => onPlaceSelect(value.properties.city, 'city')}
+                        placeSelect={(value) => onPlaceSelect(value?.properties.city, 'city')}
                     />
                 </GeoapifyContext>
                 {/* Municipality Input */}
@@ -204,7 +204,7 @@ const Form = (props) => {
                         placeholder="Enter country here"
                         type="country"
                         value={buildingData.country}
-                        placeSelect={(value) => onPlaceSelect(value.properties.country, 'country')}
+                        placeSelect={(value) => onPlaceSelect(value?.properties.country, 'country')}
                     />
                 </GeoapifyContext>
                 {/* Description Input */}
